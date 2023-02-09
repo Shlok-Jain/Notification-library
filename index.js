@@ -2,6 +2,14 @@ notification_library_list = []
 class Notification {
 
     constructor(message) {
+
+
+        if(!document.getElementsByClassName('Notification-library-myid')[0]){
+            const Notification_library_myid = document.createElement("div")
+    Notification_library_myid.classList.add("Notification-library-myid")
+    document.body.appendChild(Notification_library_myid)
+        }
+
         var my_div = document.createElement("div");
         var my_loader = document.createElement("div")
         var content = document.createElement("div")
@@ -55,10 +63,12 @@ class Notification {
     }
 }
 
-window.onload = ()=>{
+// window.onload = ()=>{
+// document.body.onload = ()=>{
+//     const Notification_library_myid = document.createElement("div")
+//     Notification_library_myid.classList.add("Notification-library-myid")
+//     document.body.appendChild(Notification_library_myid)
+// }
+    
 
-    const Notification_library_myid = document.createElement("div")
-    Notification_library_myid.classList.add("Notification-library-myid")
-    document.body.appendChild(Notification_library_myid)
-
-}
+// }
