@@ -8,9 +8,9 @@ class Notification {
         this.loader = my_loader
         this.div = my_div
 
-        my_div.classList.add("notification")
-        content.classList.add("message")
-        my_loader.classList.add("loader")
+        my_div.classList.add("Notification-library-notification")
+        content.classList.add("Notification-library-message")
+        my_loader.classList.add("Notification-library-loader")
         var text = document.createTextNode(message)
         content.appendChild(text)
         my_div.appendChild(content)
@@ -55,8 +55,10 @@ class Notification {
     }
 }
 
+window.onload = ()=>{
 
-document.getElementById("btn").onclick = ()=>{
-    const notify = new Notification("hello this is a notification very very very very big")
-    notify.show(2000)
+    var Notification_library_mydiv = document.createElement("div")
+    Notification_library_mydiv.id = "Notification-library-mydiv"
+    document.body.appendChild(Notification_library_mydiv)
+
 }
