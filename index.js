@@ -15,7 +15,7 @@ class Notification {
         content.appendChild(text)
         my_div.appendChild(content)
         my_div.appendChild(my_loader)
-        document.getElementById("myid").appendChild(my_div)
+        document.getElementsByClassName("Notification-library-myid")[0].appendChild(my_div)
         list.push(this.div)
     }
     show(duration) {
@@ -57,8 +57,8 @@ class Notification {
 
 window.onload = ()=>{
 
-    var Notification_library_mydiv = document.createElement("div")
-    Notification_library_mydiv.id = "Notification-library-mydiv"
-    document.body.appendChild(Notification_library_mydiv)
+    const Notification_library_myid = document.createElement("div")
+    Notification_library_myid.classList.add("Notification-library-myid")
+    document.body.appendChild(Notification_library_myid)
 
 }
