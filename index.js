@@ -1,4 +1,4 @@
-list = []
+notification_library_list = []
 class Notification {
 
     constructor(message) {
@@ -16,18 +16,18 @@ class Notification {
         my_div.appendChild(content)
         my_div.appendChild(my_loader)
         document.getElementsByClassName("Notification-library-myid")[0].appendChild(my_div)
-        list.push(this.div)
+        notification_library_list.push(this.div)
     }
     show(duration) {
         
         this.div.style.animation = `show forwards 325ms`
         this.loader.style.animation = `loader linear forwards ${duration}ms`
 
-        if(!(list.length == 1)){
-            for(let i=0 ; i<list.length-1 ; i++){
-                var current_top = window.getComputedStyle(list[i]).top.replace('px','')
+        if(!(notification_library_list.length == 1)){
+            for(let i=0 ; i<notification_library_list.length-1 ; i++){
+                var current_top = window.getComputedStyle(notification_library_list[i]).top.replace('px','')
                 var final_top = parseInt(current_top) + parseInt(window.getComputedStyle(this.div).height.replace('px','')) + 7;
-                list[i].style.top = final_top + "px"
+                notification_library_list[i].style.top = final_top + "px"
             }
         }
         this.div.addEventListener('touchstart', ()=>{                 //use arraow function here to access this keyword
