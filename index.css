@@ -1,4 +1,4 @@
-.Notification-library-notification{
+.Notification-library-notification-dark{
     position: fixed;
     margin: 10px;
     /* padding: 9px; */
@@ -18,18 +18,88 @@
     top: 0;
     left: -400px;
     user-select: none;
+    cursor: pointer;
+}
+.Notification-library-notification-light{
+    position: fixed;
+    margin: 10px;
+    /* padding: 9px; */
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(252, 252, 252);
+    color: black;
+    width: fit-content;
+    box-sizing: border-box;
+    min-height: 60px;
+    border-radius: 10px;
+    min-width: 250px;
+    font-family: monospace;
+    font-size: 20px;
+    max-width: 350px;
+    box-shadow: 3px 3px 3px grey;
+    top: 0;
+    left: -400px;
+    user-select: none;
+    cursor: pointer;
 }
 
+.Notification-library-content{
+    display: flex;
+}
+.Notification-library-icon{
+    width: 18%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.Notification-library-image{
+    width: 30px;
+}
 .Notification-library-message{
-    padding: 10px;
-
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 82%;
 }
 
-.Notification-library-loader{
+.Notification-library-loader-normal{
     position: absolute;
     width: 100%;
     bottom: 0;
     background: linear-gradient(90deg, #16A085 , #F4D03F , rgb(255, 133, 133));
+    height: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    animation-play-state: running;
+}
+.Notification-library-loader-success{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: rgb(0, 255, 0);
+    height: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    animation-play-state: running;
+}
+.Notification-library-loader-error{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: red;
+    height: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    animation-play-state: running;
+}
+.Notification-library-loader-alert{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: yellow;
     height: 5px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -46,24 +116,28 @@
 @keyframes show{
     0%{
         left: -400px;
+        opacity: 0;
     }
     80%{
         left: 20px;
     }
     100%{
         left: 0px;
+        opacity: 1;
     }
 }
 
 @keyframes hide{
     0%{
         left: 0px;
+        opacity: 1;
     }
     20%{
         left: 20px;
     }
     100%{
         left: -400px;
+        opacity: 0;
     }
 }
 
