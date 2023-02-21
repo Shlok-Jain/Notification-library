@@ -13,10 +13,13 @@
   
         <script src="/Notification-library/index.js"></script>
         <link rel="stylesheet" href="/Notification-library/index.css">
+        <!-- <link rel="stylesheet" href="index.css">
+        <script src="./index.js"></script> -->
 
     <!-- prismjs -->
     <link rel="stylesheet" href="/Notification-library/prismjs/prism.css">
     <script src="/Notification-library/prismjs/prism.js"></script>
+
 
 </head>
 
@@ -128,10 +131,10 @@
 document.getElementById('your-btn').onclick = () => {
 
     const my_notification = new NotificationJS({
-        message: 'This is a normal notificaion',     //specify message here
-        type: 'success',                             //specify type of notification
-        duration: 5000,                              //duration in milliseconds
-        theme: 'dark'                                //theme of notification
+        message: 'This is a normal notificaion',  //specify message here
+        type: 'success',                          //specify type of notification
+        duration: 5000,                           //duration in milliseconds
+        theme: 'dark'                             //theme of notification
     })
 
     my_notification.show();          // .show() method to show notification
@@ -148,10 +151,12 @@ document.getElementById('your-btn').onclick = () => {
         <ul>
             <li>Swipe to close on touch devices</li>
             <li>You can choose from two themes(light,dark)</li>
+            <li>Pause timer when window loses focus</li>
             <li>Different types of notifications for different type of messages( normal, alert, error, success )</li>
-            <li>You can specify time to show notification</li>
             <li>You can manually close notification( .hide() method)</li>
             <li>hover on notification to pause timer</li>
+            <li>You can specify time to show notification</li>
+            <li>and many more.....</li>
         </ul>
     </section>
 

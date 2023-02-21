@@ -3,11 +3,11 @@ class NotificationJS {
 
     constructor(json) {
 
-        
-        if(!document.getElementsByClassName('Notification-library-myid')[0]){
+
+        if (!document.getElementsByClassName('Notification-library-myid')[0]) {
             const Notification_library_myid = document.createElement("div")
-    Notification_library_myid.classList.add("Notification-library-myid")
-    document.body.appendChild(Notification_library_myid)
+            Notification_library_myid.classList.add("Notification-library-myid")
+            document.body.appendChild(Notification_library_myid)
         }
 
         var my_div = document.createElement("div");
@@ -20,7 +20,7 @@ class NotificationJS {
         this.div = my_div
         this.json = json
 
-        switch(this.json.theme){
+        switch (this.json.theme) {
             case 'light':
                 my_div.classList.add("Notification-library-notification-light")
                 break
@@ -28,9 +28,9 @@ class NotificationJS {
             case 'dark':
                 my_div.classList.add("Notification-library-notification-dark")
                 break
-                
+
         }
-        switch(this.json.type){
+        switch (this.json.type) {
             case 'success':
                 icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#1bff00" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
@@ -42,7 +42,7 @@ class NotificationJS {
                 <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
               </svg>`
                 my_loader.classList.add("Notification-library-loader-alert")
-                break        
+                break
             case 'error':
                 icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="red" class="bi bi-exclamation-octagon-fill" viewBox="0 0 16 16">
                 <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -70,17 +70,25 @@ class NotificationJS {
         notification_library_list.push(this.div)
     }
     show() {
-        
+
         this.div.style.animation = `show forwards 325ms`
         this.loader.style.animation = `loader linear forwards ${this.json.duration}ms`
 
 
+        window.addEventListener("focus", (event)=> {
+            // do something when window gets focus
+            this.loader.style.animationPlayState = 'running'
+        }, false);
+        
+        window.addEventListener("blur", (event)=> {
+            // do something when window loses focus
+            this.loader.style.animationPlayState = 'paused'
+          }, false);
 
-
-        if(!(notification_library_list.length == 1)){
-            for(let i=0 ; i<notification_library_list.length-1 ; i++){
-                var current_top = window.getComputedStyle(notification_library_list[i]).top.replace('px','')
-                var final_top = parseInt(current_top) + parseInt(window.getComputedStyle(this.div).height.replace('px','')) + 7;
+        if (!(notification_library_list.length == 1)) {
+            for (let i = 0; i < notification_library_list.length - 1; i++) {
+                var current_top = window.getComputedStyle(notification_library_list[i]).top.replace('px', '')
+                var final_top = parseInt(current_top) + parseInt(window.getComputedStyle(this.div).height.replace('px', '')) + 7;
                 notification_library_list[i].style.top = final_top + "px"
             }
         }
@@ -90,49 +98,60 @@ class NotificationJS {
         var fin_x
         var delta
 
-        this.div.addEventListener('touchstart', (e)=>{                 //use arraow function here to access this keyword
+        this.div.addEventListener('touchstart', (e) => {                 //use arraow function here to access this keyword
             this.loader.style.animationPlayState = 'paused'
             ini_x = e.touches[0].clientX;
         })
-        this.div.addEventListener('touchmove', (e)=>{
+        this.div.addEventListener('touchmove', (e) => {
             fin_x = e.touches[0].clientX;
             delta = fin_x - ini_x;
             this.div.style.transform = `translateX(${delta}px)`
         })
-        
 
-        this.div.addEventListener('touchend', ()=>{
-            var ratio = delta/window.innerWidth;
-            if(Math.abs(ratio)>0.4){
+
+        this.div.addEventListener('touchend', () => {
+            var ratio = delta / window.innerWidth;
+            if (Math.abs(ratio) > 0.4) {
                 this.hide()
             }
-            else{
+            else {
                 this.div.style.transform = `translateX(0px)`
             }
             this.loader.style.animationPlayState = 'running'
         })
-        this.div.addEventListener('mouseenter', ()=>{
+        this.div.addEventListener('mouseenter', () => {
             this.loader.style.animationPlayState = 'paused'
         })
-        this.div.addEventListener('mouseleave', ()=>{
+        this.div.addEventListener('mouseleave', () => {
             this.loader.style.animationPlayState = 'running'
         })
 
 
-        this.loader.addEventListener('animationend',()=>{
+        this.loader.addEventListener('animationend', () => {
             this.div.style.animation = "hide 325ms forwards"
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.loader.style.animation = ""
                 this.div.remove()
-            },325)
+                // notification_library_list.remove()
+                notification_library_list = notification_library_removeItemOnce(notification_library_list , this.div)
+            }, 325)
         })
         
     }
-    hide(){
+    hide() {
         this.div.style.animation = "hide 325ms forwards"
-            setTimeout(()=>{
-                this.loader.style.animation = ""
-                this.div.remove()
-            },325)
+        setTimeout(() => {
+            this.loader.style.animation = ""
+            this.div.remove()
+            notification_library_list = notification_library_removeItemOnce(notification_library_list , this.div)
+        }, 325)
     }
 }
+
+function notification_library_removeItemOnce(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
+  }
