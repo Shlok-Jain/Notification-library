@@ -118,17 +118,19 @@
         <div class="cdnlinks">
             Include following CDN links in &lt;head&gt; of your HTML
 
-            <pre style="margin: 30px;"><code class="language-html" style="font-size: 20px;">
-&lt;head&gt;
+<pre style="margin: 30px;border-radius: 10px;">
+<button onclick="copyToClipboard('htmlcode')" style="padding: 5px;font-size: 15px;cursor: pointer;">Copy code</button>                
+<code id="htmlcode" class="language-html" style="font-size: 20px;">&lt;head&gt;
     &lt;script src="https://cdn.jsdelivr.net/gh/Shlok-Jain/Notification-library@latest/index.js"&gt;&lt;/script&gt;
     &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shlok-Jain/Notification-library@latest/index.css"&gt;
 &lt;/head&gt;
-            </code></pre>
+</code></pre>
 
             Now use following script to show notification
 
-            <pre style="margin: 30px;"><code class="language-js" style="font-size: 20px;">
-document.getElementById('your-btn').onclick = () => {
+<pre style="margin: 30px;border-radius: 10px;">
+<button onclick="copyToClipboard('jscode')" style="padding: 5px;font-size: 15px;cursor: pointer;">Copy code</button>
+<code class="language-js" id="jscode" style="font-size: 20px;">document.getElementById('your-btn').onclick = () => {
 
     const my_notification = new NotificationJS({
         message: 'This is a normal notificaion',  //specify message here
@@ -140,7 +142,7 @@ document.getElementById('your-btn').onclick = () => {
     my_notification.show();          // .show() method to show notification
     // you can also use .hide() to hide notification manually
 }
-            </code></pre>
+</code></pre>
 
             Now just <span class="chill">chill</span>!!!!
         </div>
@@ -535,6 +537,32 @@ document.getElementById('your-btn').onclick = () => {
         function closenav(){
             document.getElementById('navul').style.animation = 'navclose 325ms linear forwards'
         }
+
+        function copyToClipboard(var1){
+    let val = document.getElementById(var1).innerText;
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+
+    var copy_notification = new NotificationJS({
+        message: 'Copied to clipboard',  //specify message here
+        type: 'success',                          //specify type of notification
+        duration: 5000,                           //duration in milliseconds
+        theme: 'dark' 
+    })
+
+    copy_notification.show()
+    // alert('text copied to clipboard, please use Ctrl-V to paste the data');
+
+  }  
     </script>
 
 </body>
