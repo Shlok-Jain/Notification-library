@@ -107,7 +107,7 @@
     animation-play-state: running;
 }
 
-.Notification-library-mydiv{
+.Notification-library-myid{
     position: relative;
     top: 0;
     left: 0;
@@ -148,4 +148,15 @@
     to{
         width: 0%;
     }
+}
+
+@media only screen and (max-width:550px){
+.Notification-library-notification-dark{
+min-width:0px;
+width:100%;
+}
+.Notification-library-notification-light{
+min-width:0px;
+width:100%;
+}
 }
