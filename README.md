@@ -8,7 +8,7 @@ This is a javascript library for showing notifications in javascript apps, React
 
 ## Authors
 
-- [@Shlok_Jain](https://www.github.com/Shlok_Jain)
+- [@Shlok_Jain](https://www.github.com/Shlok-Jain)
 
 
 ## Demo
