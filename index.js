@@ -9,6 +9,7 @@ class NotificationJS {
             document.body.appendChild(Notification_library_myid)
         }
 
+        var notification_container = document.createElement("div")
         var my_div = document.createElement("div");
         var my_loader = document.createElement("div")
         var content = document.createElement("div")
@@ -16,6 +17,7 @@ class NotificationJS {
         var message = document.createElement("div")
 
         this.loader = my_loader
+        this.notification_container = notification_container
         this.div = my_div
         this.json = json
 
@@ -65,7 +67,8 @@ class NotificationJS {
         content.appendChild(message)
         my_div.appendChild(content)
         my_div.appendChild(my_loader)
-        document.getElementsByClassName("Notification-library-myid")[0].prepend(my_div)
+        notification_container.appendChild(my_div)
+        document.getElementsByClassName("Notification-library-myid")[0].prepend(notification_container)
 
         // notification_library_list.push(this.div)
     }
@@ -98,7 +101,7 @@ class NotificationJS {
         this.div.addEventListener('touchmove', (e) => {
             fin_x = e.touches[0].clientX;
             delta = fin_x - ini_x;
-            this.div.style.transform = `translateX(${delta}px)`
+            this.notification_container.style.transform = `translateX(${delta}px)`
         })
         this.div.addEventListener('touchend', () => {
             var ratio = delta / window.innerWidth;
@@ -106,7 +109,7 @@ class NotificationJS {
                 this.hide()
             }
             else {
-                this.div.style.transform = `translateX(0px)`
+                this.notification_container.style.transform = `translateX(0px)`
             }
             this.loader.style.animationPlayState = 'running'
         })
