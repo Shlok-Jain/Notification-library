@@ -80,12 +80,10 @@ class NotificationJS {
 
 
         window.addEventListener("focus", (event)=> {
-            // do something when window gets focus
             this.loader.style.animationPlayState = 'running'
         }, false);
         
         window.addEventListener("blur", (event)=> {
-            // do something when window loses focus
             this.loader.style.animationPlayState = 'paused'
           }, false);
 
@@ -100,7 +98,7 @@ class NotificationJS {
         this.div.addEventListener('touchmove', (e) => {
             fin_x = e.touches[0].clientX;
             delta = fin_x - ini_x;
-            this.notification_container.style.transform = `translateX(${delta}px)`
+            this.div.style.transform = `translateX(${delta}px)`
         })
         this.div.addEventListener('touchend', () => {
             var ratio = delta / window.innerWidth;
