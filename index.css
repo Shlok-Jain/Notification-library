@@ -1,7 +1,6 @@
 .Notification-library-notification-dark{
     position: fixed;
     margin: 10px;
-    /* padding: 9px; */
     display: flex;
     flex-direction: column;
     background-color: rgb(57, 58, 85);
@@ -9,7 +8,7 @@
     width: fit-content;
     box-sizing: border-box;
     min-height: 60px;
-    border-radius: 10px;
+    border-radius: 5px;
     min-width: 250px;
     font-family: monospace;
     font-size: 20px;
@@ -19,11 +18,11 @@
     left: -400px;
     user-select: none;
     cursor: pointer;
+    transition: all 325ms;
 }
 .Notification-library-notification-light{
     position: fixed;
     margin: 10px;
-    /* padding: 9px; */
     display: flex;
     flex-direction: column;
     background-color: rgb(252, 252, 252);
@@ -31,7 +30,7 @@
     width: fit-content;
     box-sizing: border-box;
     min-height: 60px;
-    border-radius: 10px;
+    border-radius: 5px;
     min-width: 250px;
     font-family: monospace;
     font-size: 20px;
@@ -41,6 +40,7 @@
     left: -400px;
     user-select: none;
     cursor: pointer;
+    transition: all 325ms;
 }
 
 .Notification-library-content{
@@ -68,9 +68,9 @@
     bottom: 0;
     background: linear-gradient(90deg, #16A085 , #F4D03F , rgb(255, 133, 133));
     height: 5px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
     animation-play-state: running;
 }
 .Notification-library-loader-success{
@@ -79,9 +79,9 @@
     bottom: 0;
     background: rgb(0, 255, 0);
     height: 5px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
     animation-play-state: running;
 }
 .Notification-library-loader-error{
@@ -90,9 +90,9 @@
     bottom: 0;
     background: red;
     height: 5px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
     animation-play-state: running;
 }
 .Notification-library-loader-alert{
@@ -101,9 +101,9 @@
     bottom: 0;
     background: yellow;
     height: 5px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
     animation-play-state: running;
 }
 
@@ -155,9 +155,15 @@
 .Notification-library-notification-dark{
 min-width:0px;
 width:100%;
+margin-top: 5px;
+margin-left: 0;
+margin-right: 0;
 }
 .Notification-library-notification-light{
 min-width:0px;
 width:100%;
+margin-top: 5px;
+margin-left: 0;
+margin-right: 0;
 }
 }
