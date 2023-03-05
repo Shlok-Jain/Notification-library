@@ -19,6 +19,8 @@
     <!-- prismjs -->
     <link rel="stylesheet" href="/Notification-library/prismjs/prism.css">
     <script src="/Notification-library/prismjs/prism.js"></script>
+    <!-- <link rel="stylesheet" href="/prismjs/prism.css">
+    <script src="/prismjs/prism.js"></script> -->
 
 
 </head>
@@ -142,7 +144,8 @@
         message: 'This is a normal notificaion',  //specify message here
         type: 'success',                          //specify type of notification
         duration: 5000,                           //duration in milliseconds
-        theme: 'dark'                             //theme of notification
+        theme: 'dark',                            //theme of notification
+        sound: true                               //for notificaion sound
     })
 
     my_notification.show();          // .show() method to show notification
@@ -159,6 +162,7 @@
         <ul>
             <li>Swipe to close on touch devices</li>
             <li>You can choose from two themes(light,dark)</li>
+            <li>Inbuilt Notification sound (You can disable it)</li>
             <li>Pause timer when window loses focus</li>
             <li>Different types of notifications for different type of messages( normal, alert, error, success )</li>
             <li>You can manually close notification( .hide() method)</li>
@@ -606,7 +610,8 @@
                 message: 'This is an example notificaion',     //specify message here
                 type: type,                             //specify type of notification
                 duration: duration,                              //duration in milliseconds
-                theme: theme
+                theme: theme,
+                sound:true,
             })
 
             notify.show()

@@ -1,4 +1,3 @@
-notification_library_list = []
 class NotificationJS {
 
     constructor(json) {
@@ -66,10 +65,15 @@ class NotificationJS {
         content.appendChild(message)
         my_div.appendChild(content)
         my_div.appendChild(my_loader)
-        document.getElementsByClassName("Notification-library-myid")[0].appendChild(my_div)
-        notification_library_list.push(this.div)
+        document.getElementsByClassName("Notification-library-myid")[0].prepend(my_div)
+
+        // notification_library_list.push(this.div)
     }
     show() {
+        if(this.json.sound){
+            const sound = new Audio('https://cdn.jsdelivr.net/gh/Shlok-Jain/Notification-library@latest/notification.mp3')
+            sound.play();
+        }
 
         this.div.style.animation = `show forwards 325ms`
         this.loader.style.animation = `loader linear forwards ${this.json.duration}ms`
@@ -85,19 +89,10 @@ class NotificationJS {
             this.loader.style.animationPlayState = 'paused'
           }, false);
 
-        if (!(notification_library_list.length == 1)) {
-            for (let i = 0; i < notification_library_list.length - 1; i++) {
-                var current_top = window.getComputedStyle(notification_library_list[i]).top.replace('px', '')
-                var final_top = parseInt(current_top) + parseInt(window.getComputedStyle(this.div).height.replace('px', '')) + 7;
-                notification_library_list[i].style.top = final_top + "px"
-            }
-        }
         //swipe
-
         var ini_x
         var fin_x
         var delta
-
         this.div.addEventListener('touchstart', (e) => {                 //use arraow function here to access this keyword
             this.loader.style.animationPlayState = 'paused'
             ini_x = e.touches[0].clientX;
@@ -105,10 +100,8 @@ class NotificationJS {
         this.div.addEventListener('touchmove', (e) => {
             fin_x = e.touches[0].clientX;
             delta = fin_x - ini_x;
-            this.div.style.transform = `translateX(${delta}px)`
+            this.notification_container.style.transform = `translateX(${delta}px)`
         })
-
-
         this.div.addEventListener('touchend', () => {
             var ratio = delta / window.innerWidth;
             if (Math.abs(ratio) > 0.4) {
@@ -119,6 +112,7 @@ class NotificationJS {
             }
             this.loader.style.animationPlayState = 'running'
         })
+
         this.div.addEventListener('mouseenter', () => {
             this.loader.style.animationPlayState = 'paused'
         })
@@ -127,14 +121,13 @@ class NotificationJS {
         })
 
 
+
         this.loader.addEventListener('animationend', () => {
             this.div.style.animation = "hide 325ms forwards"
             setTimeout(() => {
                 this.loader.style.animation = ""
                 this.div.remove()
-                // notification_library_list.remove()
-                notification_library_list = notification_library_removeItemOnce(notification_library_list , this.div)
-            }, 325)
+             }, 325)
         })
         
     }
@@ -142,16 +135,7 @@ class NotificationJS {
         this.div.style.animation = "hide 325ms forwards"
         setTimeout(() => {
             this.loader.style.animation = ""
-            this.div.remove()
-            notification_library_list = notification_library_removeItemOnce(notification_library_list , this.div)
+            this.notification_container.remove()
         }, 325)
     }
 }
-
-function notification_library_removeItemOnce(arr, value) {
-    var index = arr.indexOf(value);
-    if (index > -1) {
-      arr.splice(index, 1);
-    }
-    return arr;
-  }

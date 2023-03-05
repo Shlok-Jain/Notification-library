@@ -1,5 +1,5 @@
 .Notification-library-notification-dark{
-    position: fixed;
+    /* position: fixed; */
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -13,15 +13,16 @@
     font-family: monospace;
     font-size: 20px;
     max-width: 350px;
-    box-shadow: 3px 3px 3px grey;
-    top: 0;
-    left: -400px;
+    box-shadow: 3px 3px 13px black;
+    /* top: 0; */
+    /* left: -400px; */
+    transform: translateX(-400px);
     user-select: none;
     cursor: pointer;
     transition: all 325ms;
 }
 .Notification-library-notification-light{
-    position: fixed;
+    /* position: fixed; */
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -35,9 +36,10 @@
     font-family: monospace;
     font-size: 20px;
     max-width: 350px;
-    box-shadow: 3px 3px 3px grey;
-    top: 0;
-    left: -400px;
+    box-shadow: 3px 3px 13px black;
+    /* top: 0; */
+    /* left: -400px; */
+    transform: translateX(-400px);
     user-select: none;
     cursor: pointer;
     transition: all 325ms;
@@ -108,7 +110,7 @@
 }
 
 .Notification-library-myid{
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
@@ -116,28 +118,34 @@
 
 @keyframes show{
     0%{
-        left: -400px;
+        /* left: -400px; */
+        transform: translateX(-400px);
         opacity: 0;
     }
     80%{
-        left: 20px;
+        /* left: 20px; */
+        transform: translateX(20px);
     }
     100%{
-        left: 0px;
+        /* left: 0px; */
+        transform: translateX(0px);
         opacity: 1;
     }
 }
 
 @keyframes hide{
     0%{
-        left: 0px;
+        /* left: 0px; */
+        transform: translateX(0px);
         opacity: 1;
     }
     20%{
-        left: 20px;
+        /* left: 20px; */
+        transform: translateX(20px);
     }
     100%{
-        left: -400px;
+        /* left: -400px; */
+        transform: translateX(-400px);
         opacity: 0;
     }
 }
@@ -156,14 +164,14 @@
 min-width:0px;
 width:100%;
 margin-top: 5px;
-margin-left: 0;
+margin-left: 10px;
 margin-right: 0;
 }
 .Notification-library-notification-light{
 min-width:0px;
 width:100%;
 margin-top: 5px;
-margin-left: 0;
+margin-left: 10px;
 margin-right: 0;
 }
 }
