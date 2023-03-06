@@ -1,4 +1,4 @@
-const sound = new Audio('https://cdn.jsdelivr.net/gh/Shlok-Jain/Notification-library@latest/notification.mp3')
+var sound = new Audio('https://cdn.jsdelivr.net/gh/Shlok-Jain/Notification-library@latest/notification.mp3')
 
 class NotificationJS {
 
