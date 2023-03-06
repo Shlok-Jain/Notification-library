@@ -1,3 +1,6 @@
+window.onload = ()=>{
+    const sound = new Audio('https://cdn.jsdelivr.net/gh/Shlok-Jain/Notification-library@latest/notification.mp3')
+}
 class NotificationJS {
 
     constructor(json) {
@@ -74,7 +77,6 @@ class NotificationJS {
     }
     show() {
         if(this.json.sound){
-            const sound = new Audio('https://cdn.jsdelivr.net/gh/Shlok-Jain/Notification-library@latest/notification.mp3')
             sound.play();
         }
 
