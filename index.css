@@ -80,7 +80,7 @@
     position: absolute;
     width: 100%;
     bottom: 0;
-    background: linear-gradient(90deg, #16A085, #F4D03F, rgb(255, 133, 133));
+    background: linear-gradient(90deg,#47cf73,#ffdd40,#ae63e4,#0ebeff,#47cf73);
     height: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
