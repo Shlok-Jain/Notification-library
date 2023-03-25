@@ -1,4 +1,4 @@
-var sound = new Audio('https://cdn.jsdelivr.net/gh/Shlok-Jain/Notification-library@latest/notification.mp3')
+// var sound = new Audio('https://cdn.jsdelivr.net/gh/Shlok-Jain/Notification-library@latest/notification.mp3')
 
 class NotificationJS {
 
@@ -17,11 +17,13 @@ class NotificationJS {
         var content = document.createElement("div")
         var icon = document.createElement("div")
         var message = document.createElement("div")
+        var close_btn = document.createElement("div")
 
         this.loader = my_loader
         this.notification_container = notification_container
         this.div = my_div
         this.json = json
+        this.close_btn = close_btn
 
         switch (this.json.theme) {
             case 'light':
@@ -63,19 +65,24 @@ class NotificationJS {
         content.classList.add("Notification-library-content")
         icon.classList.add("Notification-library-icon")
         message.classList.add("Notification-library-message")
+        close_btn.classList.add("Notification-library-close")
+        notification_container.classList.add('Notification-library-notification-container')
         var text = document.createTextNode(this.json.message)
         message.appendChild(text)
         content.appendChild(icon)
         content.appendChild(message)
+        content.appendChild(close_btn)
         my_div.appendChild(content)
         my_div.appendChild(my_loader)
         notification_container.appendChild(my_div)
         document.getElementsByClassName("Notification-library-myid")[0].prepend(notification_container)
 
+        close_btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" stroke="grey" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/></svg>'
         // notification_library_list.push(this.div)
     }
     show() {
         if(this.json.sound){
+            var sound = new Audio('https://cdn.jsdelivr.net/gh/Shlok-Jain/Notification-library@latest/notification.mp3')
             sound.play();
         }
 
@@ -83,11 +90,11 @@ class NotificationJS {
         this.loader.style.animation = `loader linear forwards ${this.json.duration}ms`
 
 
-        window.addEventListener("focus", (event)=> {
+        window.addEventListener("focus", ()=> {
             this.loader.style.animationPlayState = 'running'
         }, false);
         
-        window.addEventListener("blur", (event)=> {
+        window.addEventListener("blur", ()=> {
             this.loader.style.animationPlayState = 'paused'
           }, false);
 
@@ -95,7 +102,7 @@ class NotificationJS {
         var ini_x
         var fin_x
         var delta
-        this.div.addEventListener('touchstart', (e) => {                 //use arraow function here to access this keyword
+        this.div.addEventListener('touchstart', (e) => {
             this.loader.style.animationPlayState = 'paused'
             ini_x = e.touches[0].clientX;
         })
@@ -103,6 +110,7 @@ class NotificationJS {
             fin_x = e.touches[0].clientX;
             delta = fin_x - ini_x;
             this.notification_container.style.transform = `translateX(${delta}px)`
+            
         })
         this.div.addEventListener('touchend', () => {
             var ratio = delta / window.innerWidth;
@@ -111,6 +119,16 @@ class NotificationJS {
             }
             else {
                 this.notification_container.style.transform = `translateX(0px)`
+                // this.notification_container.animate([
+                //     {transform:'translateX(0px)'}
+                // ],{
+                //     duration:125,
+                //     fill:'forwards'
+                // })
+
+                // setTimeout(()=>{
+                //     this.notification_container.style.animationFillMode = "none"
+                // },100)
             }
             this.loader.style.animationPlayState = 'running'
         })
@@ -121,15 +139,13 @@ class NotificationJS {
         this.div.addEventListener('mouseleave', () => {
             this.loader.style.animationPlayState = 'running'
         })
-
+        this.close_btn.addEventListener('click',()=>{
+            this.hide()
+        })
 
 
         this.loader.addEventListener('animationend', () => {
-            this.div.style.animation = "hide 325ms forwards"
-            setTimeout(() => {
-                this.loader.style.animation = ""
-                this.div.remove()
-             }, 325)
+            this.hide()
         })
         
     }

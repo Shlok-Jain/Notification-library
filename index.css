@@ -1,81 +1,94 @@
-.Notification-library-notification-dark{
-    /* position: fixed; */
+.Notification-library-notification-dark {
     margin: 10px;
     display: flex;
     flex-direction: column;
     background-color: rgb(57, 58, 85);
     color: white;
-    width: fit-content;
     box-sizing: border-box;
     min-height: 60px;
     border-radius: 5px;
-    min-width: 250px;
+    min-width: 330px;
     font-family: monospace;
     font-size: 20px;
     max-width: 350px;
-    box-shadow: 3px 3px 13px black;
-    /* top: 0; */
-    /* left: -400px; */
+    box-shadow: 0px 0px 5px black;
     transform: translateX(-400px);
     user-select: none;
     cursor: pointer;
     transition: all 325ms;
 }
-.Notification-library-notification-light{
-    /* position: fixed; */
+
+.Notification-library-notification-light {
     margin: 10px;
     display: flex;
     flex-direction: column;
     background-color: rgb(252, 252, 252);
     color: black;
-    width: fit-content;
     box-sizing: border-box;
     min-height: 60px;
     border-radius: 5px;
-    min-width: 250px;
+    min-width: 330px;
     font-family: monospace;
     font-size: 20px;
     max-width: 350px;
-    box-shadow: 3px 3px 13px black;
-    /* top: 0; */
-    /* left: -400px; */
+    box-shadow: 0px 0px 5px black;
     transform: translateX(-400px);
     user-select: none;
     cursor: pointer;
     transition: all 325ms;
 }
 
-.Notification-library-content{
+.Notification-library-content {
+    position: absolute;
     display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
-.Notification-library-icon{
-    width: 18%;
+
+.Notification-library-icon {
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
 }
-.Notification-library-image{
+.Notification-library-close{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Notification-library-close>svg{
+    stroke-width: 1px;
+}
+
+.Notification-library-image {
     width: 30px;
 }
-.Notification-library-message{
+
+.Notification-library-message {
     padding-top: 5px;
     padding-bottom: 5px;
     width: 82%;
+    display: flex;
+    align-items: center;
 }
 
-.Notification-library-loader-normal{
+.Notification-library-loader-normal {
     position: absolute;
     width: 100%;
     bottom: 0;
-    background: linear-gradient(90deg, #16A085 , #F4D03F , rgb(255, 133, 133));
+    background: linear-gradient(90deg, #16A085, #F4D03F, rgb(255, 133, 133));
     height: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     animation-play-state: running;
 }
-.Notification-library-loader-success{
+
+.Notification-library-loader-success {
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -86,7 +99,8 @@
     border-top-right-radius: 5px;
     animation-play-state: running;
 }
-.Notification-library-loader-error{
+
+.Notification-library-loader-error {
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -97,7 +111,8 @@
     border-top-right-radius: 5px;
     animation-play-state: running;
 }
-.Notification-library-loader-alert{
+
+.Notification-library-loader-alert {
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -109,69 +124,70 @@
     animation-play-state: running;
 }
 
-.Notification-library-myid{
+.Notification-library-myid {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
 }
 
-@keyframes show{
-    0%{
-        /* left: -400px; */
+@keyframes show {
+    0% {
         transform: translateX(-400px);
         opacity: 0;
     }
-    80%{
-        /* left: 20px; */
+
+    80% {
         transform: translateX(20px);
     }
-    100%{
-        /* left: 0px; */
+
+    100% {
         transform: translateX(0px);
         opacity: 1;
     }
 }
 
-@keyframes hide{
-    0%{
-        /* left: 0px; */
+@keyframes hide {
+    0% {
         transform: translateX(0px);
         opacity: 1;
     }
-    20%{
-        /* left: 20px; */
+
+    20% {
         transform: translateX(20px);
     }
-    100%{
-        /* left: -400px; */
+
+    100% {
         transform: translateX(-400px);
         opacity: 0;
     }
 }
 
-@keyframes loader{
-    from{
+@keyframes loader {
+    from {
         width: 100%;
     }
-    to{
+
+    to {
         width: 0%;
     }
 }
 
-@media only screen and (max-width:550px){
-.Notification-library-notification-dark{
-min-width:0px;
-width:100%;
-margin-top: 5px;
-margin-left: 10px;
-margin-right: 0;
-}
-.Notification-library-notification-light{
-min-width:0px;
-width:100%;
-margin-top: 5px;
-margin-left: 10px;
-margin-right: 0;
-}
+@media only screen and (max-width:550px) {
+    .Notification-library-notification-dark {
+        max-width: 100%;
+        margin: 5px auto;
+    }
+
+    .Notification-library-notification-light {
+        max-width: 100%;
+        margin: 5px auto;
+    }
+    .Notification-library-myid{
+        width: 100%;
+    }
+    .Notification-library-notification-container{
+        width: 95%;
+        margin: auto;
+    }
 }
