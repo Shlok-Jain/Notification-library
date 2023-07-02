@@ -12,16 +12,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotificationJS : By Shlok Jain</title>
   
-        <script src="/Notification-library/index.js"></script>
-        <link rel="stylesheet" href="/Notification-library/index.css">
-        <!-- <link rel="stylesheet" href="index.css">
-        <script src="./index.js"></script> -->
+        <!-- <script src="/Notification-library/index.js"></script>
+        <link rel="stylesheet" href="/Notification-library/index.css"> -->
+        <link rel="stylesheet" href="index.css">
+        <script src="./index.js"></script>
 
     <!-- prismjs -->
-    <link rel="stylesheet" href="/Notification-library/prismjs/prism.css">
-    <script src="/Notification-library/prismjs/prism.js"></script>
-    <!-- <link rel="stylesheet" href="/prismjs/prism.css">
-    <script src="/prismjs/prism.js"></script> -->
+    <!-- <link rel="stylesheet" href="/Notification-library/prismjs/prism.css">
+    <script src="/Notification-library/prismjs/prism.js"></script> -->
+    <link rel="stylesheet" href="/prismjs/prism.css">
+    <script src="/prismjs/prism.js"></script>
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -152,7 +152,8 @@
         type: 'success',                          //specify type of notification
         duration: 5000,                           //duration in milliseconds
         theme: 'dark',                            //theme of notification
-        sound: true                               //for notificaion sound
+        sound: true,                              //for notificaion sound
+        disable_timer:false                            //if you don't want timer then set it true
     })
 
     my_notification.show();          // .show() method to show notification
@@ -614,11 +615,11 @@
             var duration = document.getElementById('duration').value
 
             var notify = new NotificationJS({
-                message: 'This is an example notificaion',     //specify message here
+                message: 'This is an example notifictaion',     //specify message here
                 type: type,                             //specify type of notification
                 duration: duration,                              //duration in milliseconds
                 theme: theme,
-                sound:true,
+                sound:false,
             })
 
             notify.show()

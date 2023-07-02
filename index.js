@@ -3,8 +3,8 @@
 class NotificationJS {
 
     constructor(json) {
-
-
+        
+        
         if (!document.getElementsByClassName('Notification-library-myid')[0]) {
             const Notification_library_myid = document.createElement("div")
             Notification_library_myid.classList.add("Notification-library-myid")
@@ -24,7 +24,7 @@ class NotificationJS {
         this.div = my_div
         this.json = json
         this.close_btn = close_btn
-
+        
         switch (this.json.theme) {
             case 'light':
                 my_div.classList.add("Notification-library-notification-light")
@@ -33,16 +33,16 @@ class NotificationJS {
             case 'dark':
                 my_div.classList.add("Notification-library-notification-dark")
                 break
-
-        }
+                
+            }
         switch (this.json.type) {
             case 'success':
                 icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#1bff00" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-              </svg> `
+                </svg> `
                 my_loader.classList.add("Notification-library-loader-success")
                 break
-            case 'alert':
+                case 'alert':
                 icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="yellow" class="bi bi-exclamation-octagon-fill" viewBox="0 0 16 16">
                 <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
               </svg>`
@@ -52,16 +52,16 @@ class NotificationJS {
                 icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="red" class="bi bi-exclamation-octagon-fill" viewBox="0 0 16 16">
                 <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
               </svg>`
-                my_loader.classList.add("Notification-library-loader-error")
-                break
+              my_loader.classList.add("Notification-library-loader-error")
+              break
             case 'normal':
                 icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="orange" class="bi bi-bell" viewBox="0 0 16 16">
                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
               </svg>`
-                my_loader.classList.add("Notification-library-loader-normal")
-                break
+              my_loader.classList.add("Notification-library-loader-normal")
+              break
         }
-
+        
         content.classList.add("Notification-library-content")
         icon.classList.add("Notification-library-icon")
         message.classList.add("Notification-library-message")
@@ -76,9 +76,11 @@ class NotificationJS {
         my_div.appendChild(my_loader)
         notification_container.appendChild(my_div)
         document.getElementsByClassName("Notification-library-myid")[0].prepend(notification_container)
-
+        if(this.json.disable_timer == true){
+            this.loader.remove()
+        }
+        
         close_btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" stroke="grey" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/></svg>'
-        // notification_library_list.push(this.div)
     }
     show() {
         if(this.json.sound){
@@ -119,16 +121,6 @@ class NotificationJS {
             }
             else {
                 this.notification_container.style.transform = `translateX(0px)`
-                // this.notification_container.animate([
-                //     {transform:'translateX(0px)'}
-                // ],{
-                //     duration:125,
-                //     fill:'forwards'
-                // })
-
-                // setTimeout(()=>{
-                //     this.notification_container.style.animationFillMode = "none"
-                // },100)
             }
             this.loader.style.animationPlayState = 'running'
         })
