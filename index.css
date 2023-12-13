@@ -39,12 +39,7 @@
 }
 
 .Notification-library-content {
-    position: absolute;
     display: flex;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
 }
 
 .Notification-library-icon {
@@ -131,7 +126,7 @@
     z-index: 100;
 }
 
-@keyframes show {
+@keyframes showNotification-library {
     0% {
         transform: translateX(-400px);
         opacity: 0;
@@ -147,7 +142,7 @@
     }
 }
 
-@keyframes hide {
+@keyframes hideNotification-library {
     0% {
         transform: translateX(0px);
         opacity: 1;
@@ -163,7 +158,7 @@
     }
 }
 
-@keyframes loader {
+@keyframes loaderNotification-library {
     from {
         width: 100%;
     }

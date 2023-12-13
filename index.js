@@ -88,8 +88,8 @@ class NotificationJS {
             sound.play();
         }
 
-        this.div.style.animation = `show forwards 325ms`
-        this.loader.style.animation = `loader linear forwards ${this.json.duration}ms`
+        this.div.style.animation = `showNotification-library forwards 325ms`
+        this.loader.style.animation = `loaderNotification-library linear forwards ${this.json.duration}ms`
 
 
         window.addEventListener("focus", ()=> {
@@ -142,7 +142,7 @@ class NotificationJS {
         
     }
     hide() {
-        this.div.style.animation = "hide 325ms forwards"
+        this.div.style.animation = "hideNotification-library 325ms forwards"
         setTimeout(() => {
             this.loader.style.animation = ""
             this.notification_container.remove()
